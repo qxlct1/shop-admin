@@ -3,7 +3,7 @@
         <!-- 顶部 -->
         <el-row type='flex' justify='space-between'>
         <div>
-            <el-button>新增</el-button>
+            <el-button @click="handleToGoodsAdd">新增</el-button>
             <el-button type="danger" @click="handleDeleteMore">删除</el-button>
         </div>
         <!-- 搜索输入框 -->
@@ -143,7 +143,8 @@ export default {
 
         // 编辑商品
         handleEdit(goods){
-            console.log(goods);
+            // console.log(goods);
+            this.$router.push('/admin/goods-edit/'+goods.id)
         },
 
         //搜索
@@ -208,22 +209,13 @@ export default {
              // 保存当前的页面
              this.pageIndex=val;
              this.getList()
+        },
+        handleToGoodsAdd(){
+            // 跳转到新增商品页
+            this.$router.push('/admin/goods-add')
         }
     },
     mounted(){
-        // 请求商品列表数据
-        // pageIndex: 当前的页面，会变化
-        // pageSize：数据条数，会变化
-        // searchValue：搜索关键字
-    //     this.$axios({
-    //         url:`http://localhost:8899/admin/goods/getlist?pageIndex=1&pageSize=5&searchvalue=`,
-    //         method:'GET'
-    //     }).then(res=>{
-    //         console.log(res.data);
-    //         const data =res.data;
-    //         // 商品列表的数据
-    //         this.tableData=data.message;
-    //     })
      this.getList()
     }
    
