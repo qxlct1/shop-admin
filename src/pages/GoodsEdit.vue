@@ -228,7 +228,13 @@ export default {
 
       this.form = {
         ...message,
-        category_id: +message.category_id
+        category_id: +message.category_id,
+        fileList:message.fileList.map(v=>{
+          return{
+            ...v,
+            url:`http://localhost:8899${v.shorturl}`
+          }
+        })
       };
       //  imageUrl封面的预览
       this.imageUrl = message.imgList[0].url;
